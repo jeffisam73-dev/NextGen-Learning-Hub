@@ -1,0 +1,104 @@
+<div class="payment-container">
+  <div class="payment-box">
+
+    <h3 class="payment-title">Payment Options</h3>
+
+    <p class="payment-subtitle">Select your preferred payment method</p>
+
+    <!-- UPI Payment -->
+    <div class="payment-method">
+      <div class="method-card upi-card">
+        <input type="radio" id="upi" name="paymentMethod" value="upi" class="form-check-input">
+        <label for="upi" class="method-label">
+          <i class="bi bi-qr-code"></i>
+          <span>UPI Payment</span>
+        </label>
+      </div>
+      <div class="method-details" id="upiDetails" style="display: none;">
+        <input type="text" class="form-control" placeholder="Enter UPI ID (e.g., yourname@upi)">
+        <small class="text-muted">e.g., 9876543210@okhdfcbank</small>
+      </div>
+    </div>
+
+    <!-- Debit Card -->
+    <div class="payment-method">
+      <div class="method-card debit-card">
+        <input type="radio" id="debit" name="paymentMethod" value="debit" class="form-check-input">
+        <label for="debit" class="method-label">
+          <i class="bi bi-credit-card"></i>
+          <span>Debit Card</span>
+        </label>
+      </div>
+      <div class="method-details" id="debitDetails" style="display: none;">
+        <input type="text" class="form-control card-input" placeholder="Card Number" maxlength="16">
+        <div style="display: flex; gap: 10px;">
+          <input type="text" class="form-control card-input" placeholder="MM/YY" style="flex: 1;">
+          <input type="text" class="form-control card-input" placeholder="CVV" maxlength="3" style="flex: 1;">
+        </div>
+        <input type="text" class="form-control card-input" placeholder="Cardholder Name">
+      </div>
+    </div>
+
+    <!-- Credit Card -->
+    <div class="payment-method">
+      <div class="method-card credit-card">
+        <input type="radio" id="credit" name="paymentMethod" value="credit" class="form-check-input">
+        <label for="credit" class="method-label">
+          <i class="bi bi-credit-card-2-front"></i>
+          <span>Credit Card</span>
+        </label>
+      </div>
+      <div class="method-details" id="creditDetails" style="display: none;">
+        <input type="text" class="form-control card-input" placeholder="Card Number" maxlength="16">
+        <div style="display: flex; gap: 10px;">
+          <input type="text" class="form-control card-input" placeholder="MM/YY" style="flex: 1;">
+          <input type="text" class="form-control card-input" placeholder="CVV" maxlength="3" style="flex: 1;">
+        </div>
+        <input type="text" class="form-control card-input" placeholder="Cardholder Name">
+      </div>
+    </div>
+
+    <!-- Bank Transfer -->
+    <div class="payment-method">
+      <div class="method-card bank-card">
+        <input type="radio" id="bank" name="paymentMethod" value="bank" class="form-check-input">
+        <label for="bank" class="method-label">
+          <i class="bi bi-bank"></i>
+          <span>Bank Transfer</span>
+        </label>
+      </div>
+      <div class="method-details" id="bankDetails" style="display: none;">
+        <div class="bank-info">
+          <p><strong>Account Holder:</strong> NextGen Learning Hub</p>
+          <p><strong>Account Number:</strong> 1234567890</p>
+          <p><strong>IFSC Code:</strong> SBIN0001234</p>
+          <p><strong>Bank Name:</strong> State Bank of India</p>
+        </div>
+        <input type="text" class="form-control" placeholder="Reference ID (if any)">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="order-summary">
+      <h5>Order Summary</h5>
+      <div class="summary-item">
+        <span>Selected Courses:</span>
+        <strong id="courseCount">--</strong>
+      </div>
+      <div class="summary-item">
+        <span>Amount:</span>
+        <strong id="totalAmount">₹ 0</strong>
+      </div>
+    </div>
+
+    <button routerLink="/success" class="btn btn-success btn-payment w-100 mt-3">
+      <i class="bi bi-check-circle"></i> Complete Payment
+    </button>
+
+    <button routerLink="/courses" class="btn btn-outline-secondary w-100 mt-2">
+      Back to Courses
+    </button>
+
+  </div>
+</div>

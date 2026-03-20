@@ -1,0 +1,27 @@
+.hero {
+  background: linear-gradient(135deg,#0d3b66,#1c6dd0);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.features {
+  padding: 50px;
+}
+
+.feature-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.feature-box:hover {
+  transform: scale(1.05);
+}

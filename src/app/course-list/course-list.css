@@ -1,0 +1,24 @@
+.course-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+.course-img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.price {
+  color: #1c6dd0;
+  font-weight: bold;
+}
+
+.rating {
+  color: orange;
+}

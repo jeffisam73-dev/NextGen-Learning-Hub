@@ -1,0 +1,8 @@
+.enroll-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}

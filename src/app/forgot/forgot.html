@@ -1,0 +1,32 @@
+<div class="forgot-container">
+  <div class="forgot-box">
+
+    <h3 class="forgot-title">Reset Password</h3>
+
+    <p class="forgot-subtitle">Enter your email to receive password reset instructions</p>
+
+    <div class="form-group">
+      <label for="email" class="form-label">Email Address</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter your registered email">
+    </div>
+
+    <div class="form-group">
+      <label for="newPassword" class="form-label">New Password</label>
+      <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+    </div>
+
+    <button routerLink="/login" class="btn btn-primary w-100 reset-btn">
+      Reset Password
+    </button>
+
+    <div class="back-to-login">
+      <p>Remember your password? <a routerLink="/login" class="login-link-text">Back to Sign In</a></p>
+    </div>
+
+  </div>
+</div>
