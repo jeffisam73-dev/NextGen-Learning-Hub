@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule }  from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { CourseService, Course } from '../services/course.service';
 
 @Component({
   selector: 'app-course-list',
@@ -9,38 +10,60 @@ import { CommonModule }  from '@angular/common';
   templateUrl: './course-list.html',
   styleUrls: ['./course-list.css'],
 })
-export class CourseListComponent {
-  available = [
-  'Angular',
-  'Java',
-  'Python',
-  'SQL'
-];
+export class CourseListComponent implements OnInit {
+  available: Course[] = [];
+  selected: Course[] = [];
+  loading = false;
+  error: string | null = null;
 
-selected: string[] = [];
-constructor(private router:Router) {}
+  constructor(
+    private router: Router,
+    private courseService: CourseService
+  ) {}
 
-addCourse(course: string) {
+  ngOnInit() {
+    this.loadCourses();
+  }
 
-  this.selected.push(course);
+  loadCourses() {
+    this.loading = true;
+    this.error = null;
+    this.courseService.getAvailableCourses().subscribe({
+      next: (courses) => {
+        this.available = courses;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error loading courses:', err);
+        this.error = 'Failed to load courses. Please try again.';
+        this.loading = false;
+      }
+    });
+  }
 
-  this.available =
-    this.available.filter(c => c !== course);
+  addCourse(course: Course) {
+    this.selected.push(course);
+    this.available = this.available.filter(c => c.courseid !== course.courseid);
+  }
 
-}
+  removeCourse(course: Course) {
+    this.available.push(course);
+    this.selected = this.selected.filter(c => c.courseid !== course.courseid);
+  }
 
-removeCourse(course: string) {
+  submit() {
+    // Store selected courses for next step
+    sessionStorage.setItem('selectedCourses', JSON.stringify(this.selected));
+    this.router.navigate(['/payment']);
+  }
 
-  this.available.push(course);
+  formatDate(date: string): string {
+    return new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  }
 
-  this.selected =
-    this.selected.filter(c => c !== course);
-
-}
-
-submit() {
-
-  this.router.navigate(['/payment']);
-
-}
+  getTotalPrice = (acc: number, course: Course) => acc + course.rate;
 }

@@ -12,7 +12,7 @@ import { PaymentSuccessComponent } from './payment-success/payment-success';
 
 
   export const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'landing', pathMatch: 'full'},
   { path: 'landing', component: LandingComponent },
 
   { path: 'signup', component: SignupComponent },
